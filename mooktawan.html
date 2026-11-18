@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Portfolio | Student</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #f472b6;
+  --dark-pink: #db2777;
+  --light-pink: #fce7f3;
+  --white: #ffffff;
+  --bg: #fff7fb;
+  --text: #4a3040;
+  --card: #ffffff;
+  --shadow: 0 8px 30px rgba(219,39,119,.10);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: .3s;
+}
+
+body.dark {
+  --bg: #251827;
+  --text: #fff0f7;
+  --card: #38243a;
+  --light-pink: #54304b;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(12px);
+  padding: 15px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+body.dark header {
+  background: rgba(37,24,39,.95);
+}
+
+.logo {
+  color: var(--dark-pink);
+  font-size: 25px;
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+nav a {
+  font-size: 14px;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--dark-pink);
+}
+
+.menu-btn, .theme-btn {
+  border: none;
+  background: var(--light-pink);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--dark-pink);
+  font-size: 17px;
+}
+
+.menu-btn {
+  display: none;
+}
+
+section {
+  padding: 100px 9%;
+}
+
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-top: 130px;
+}
+
+.home-content {
+  max-width: 600px;
+}
+
+.tag {
+  background: var(--light-pink);
+  color: var(--dark-pink);
+  padding: 8px 18px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.home h1 {
+  font-size: clamp(38px, 6vw, 65px);
+  line-height: 1.3;
+}
+
+.home h1 span {
+  color: var(--pink);
+}
+
+.home p {
+  color: var(--text);
+  opacity: .8;
+  line-height: 2;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--pink);
+  color: white;
+  padding: 13px 28px;
+  border-radius: 30px;
+  margin-top: 25px;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: var(--dark-pink);
+  transform: translateY(-4px);
+}
+
+.profile {
+  width: 310px;
+  height: 310px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 12px solid var(--light-pink);
+  background: linear-gradient(135deg,#fbcfe8,#f9a8d4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  box-shadow: var(--shadow);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-15px); }
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 35px;
+  color: var(--dark-pink);
+}
+
+.section-title p {
+  opacity: .7;
+}
+
+.about {
+  background: var(--light-pink);
+  border-radius: 40px;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  line-height: 2.1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 25px;
+}
+
+.card {
+  background: var(--card);
+  padding: 28px;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  transition: .3s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card .emoji {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: var(--dark-pink);
+  margin-bottom: 10px;
+}
+
+.card p {
+  opacity: .75;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.skill-bar {
+  background: var(--light-pink);
+  height: 12px;
+  border-radius: 20px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  background: linear-gradient(90deg,#f9a8d4,#db2777);
+  height: 100%;
+  border-radius: 20px;
+}
+
+.certificate {
+  min-height: 150px;
+  border: 2px dashed var(--pink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact {
+  background: var(--light-pink);
+  border-radius: 40px;
+}
+
+.contact-info {
+  text-align: center;
+  line-height: 2.5;
+}
+
+.contact-info a {
+  color: var(--dark-pink);
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: var(--card);
+  margin-top: 70px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: .8s;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media(max-width:850px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    width: 220px;
+    background: var(--card);
+    flex-direction: column;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .home {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .profile {
+    width: 230px;
+    height: 230px;
+    font-size: 75px;
+  }
+
+  section {
+    padding: 80px 6%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">♡ MY PORTFOLIO</div>
+
+  <nav id="navbar">
+    <a href="#home">หน้าแรก</a>
+    <a href="#about">เกี่ยวกับฉัน</a>
+    <a href="#education">การศึกษา</a>
+    <a href="#skills">ทักษะ</a>
+    <a href="#projects">ผลงาน</a>
+    <a href="#contact">ติดต่อ</a>
+  </nav>
+
+  <div style="display:flex;gap:10px">
+    <button class="theme-btn" onclick="toggleTheme()">☾</button>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
+</header>
+
+<!-- HOME -->
+<section class="home" id="home">
+
+  <div class="home-content reveal">
+    <span class="tag">🌷 Welcome to my portfolio</span>
+
+    <h1>
+      Hello! I'm<br>
+      <span>YOUR NAME</span>
+    </h1>
+
+    <h3>Student | Creative Person ✨</h3>
+
+    <p>
+      สวัสดีค่ะ ยินดีต้อนรับเข้าสู่เว็บไซต์ Portfolio
+      ของฉัน เว็บไซต์นี้จัดทำขึ้นเพื่อแนะนำตัว
+      แสดงประวัติส่วนตัว ทักษะ ความสามารถ
+      กิจกรรม และผลงานต่าง ๆ
+    </p>
+
+    <a href="#about" class="btn">รู้จักฉันเพิ่มเติม ♡</a>
+  </div>
+
+  <div class="profile">
+    🌸
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about reveal">
+
+  <div class="section-title">
+    <h2>About Me ♡</h2>
+    <p>เกี่ยวกับตัวฉัน</p>
+  </div>
+
+  <div class="about-content">
+    <p>
+      สวัสดีค่ะ ฉันชื่อ YOUR NAME
+      ชื่อเล่น YOUR NICKNAME
+      ปัจจุบันกำลังศึกษาอยู่ที่ YOUR SCHOOL
+      ฉันเป็นคนที่มีความตั้งใจ ขยัน อดทน
+      และชอบเรียนรู้สิ่งใหม่ ๆ
+      มีความสนใจในด้านเทคโนโลยี
+      การออกแบบ และการสร้างสรรค์ผลงาน
+      หวังว่า Portfolio นี้จะทำให้ทุกคนรู้จักฉันมากขึ้นนะคะ 💗
+    </p>
+  </div>
+
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+
+  <div class="section-title reveal">
+    <h2>Education 🎓</h2>
+    <p>ประวัติการศึกษา</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card reveal">
+      <div class="emoji">🏫</div>
+      <h3>ระดับประถมศึกษา</h3>
+      <p>ชื่อโรงเรียนของคุณ</p>
+      <p>ปีที่สำเร็จการศึกษา : 20XX</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">📚</div>
+      <h3>ระดับมัธยมศึกษา</h3>
+      <p>ชื่อโรงเรียนของคุณ</p>
+      <p>กำลังศึกษา / ปีที่สำเร็จ : 20XX</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="about">
+
+  <div class="section-title reveal">
+    <h2>My Skills ✨</h2>
+    <p>ทักษะและความสามารถ</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card reveal">
+      <div class="emoji">💻</div>
+      <h3>Computer</h3>
+      <p>มีความรู้พื้นฐานด้านคอมพิวเตอร์</p>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width:80%"></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">🎨</div>
+      <h3>Design</h3>
+      <p>มีความคิดสร้างสรรค์และการออกแบบ</p>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width:85%"></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">🤝</div>
+      <h3>Teamwork</h3>
+      <p>สามารถทำงานร่วมกับผู้อื่นได้ดี</p>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width:90%"></div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+
+  <div class="section-title reveal">
+    <h2>Activities 🌷</h2>
+    <p>กิจกรรมที่เข้าร่วม</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card reveal">
+      <div class="emoji">🏆</div>
+      <h3>กิจกรรมที่ 1</h3>
+      <p>รายละเอียดกิจกรรมและสิ่งที่ได้รับจากการเข้าร่วม</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">🎤</div>
+      <h3>กิจกรรมที่ 2</h3>
+      <p>รายละเอียดกิจกรรมและประสบการณ์ที่ได้รับ</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">🌱</div>
+      <h3>กิจกรรมที่ 3</h3>
+      <p>รายละเอียดกิจกรรมและความประทับใจ</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="about">
+
+  <div class="section-title reveal">
+    <h2>My Projects 💗</h2>
+    <p>ผลงานของฉัน</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card reveal">
+      <div class="emoji">🌐</div>
+      <h3>Website Design</h3>
+      <p>ผลงานการออกแบบและพัฒนาเว็บไซต์</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">🖼️</div>
+      <h3>Graphic Design</h3>
+      <p>ผลงานการออกแบบกราฟิก</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">📱</div>
+      <h3>Creative Work</h3>
+      <p>ผลงานสร้างสรรค์อื่น ๆ</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+
+  <div class="section-title reveal">
+    <h2>Certificates 🏅</h2>
+    <p>เกียรติบัตรและรางวัล</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card certificate reveal">
+      <div class="emoji">📜</div>
+      <h3>เกียรติบัตรที่ 1</h3>
+      <p>ชื่อหลักสูตรหรือการแข่งขัน</p>
+    </div>
+
+    <div class="card certificate reveal">
+      <div class="emoji">🥇</div>
+      <h3>เกียรติบัตรที่ 2</h3>
+      <p>ชื่อหลักสูตรหรือการแข่งขัน</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact reveal">
+
+  <div class="section-title">
+    <h2>Contact Me 💌</h2>
+    <p>ช่องทางการติดต่อ</p>
+  </div>
+
+  <div class="contact-info">
+    <p>📧 Email: your@email.com</p>
+    <p>📘 Facebook:
+      <a href="#">Your Facebook</a>
+    </p>
+    <p>📷 Instagram:
+      <a href="#">Your Instagram</a>
+    </p>
+    <p>📱 Phone: 08X-XXX-XXXX</p>
+  </div>
+
+</section>
+
+<footer>
+  <p>Made with 💗 by YOUR NAME</p>
+  <p>© 2026 My Creative Portfolio</p>
+</footer>
+
+<script>
+
+// เปิด/ปิดเมนู
+function toggleMenu() {
+  document.getElementById("navbar")
+  .classList.toggle("active");
+}
+
+// เปลี่ยนธีม
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  const btn = document.querySelector(".theme-btn");
+
+  btn.textContent =
+    document.body.classList.contains("dark")
+    ? "☀"
+    : "☾";
+}
+
+// Animation เมื่อเลื่อนหน้า
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+
+document.querySelectorAll(".reveal").forEach(el => {
+  observer.observe(el);
+});
+
+// ปิดเมนูเมื่อกดลิงก์
+document.querySelectorAll("nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navbar")
+    .classList.remove("active");
+  });
+});
+
+</script>
+
+</body>
+</html>
